@@ -1,0 +1,54 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  generateName: mlops-simple-pipeline-
+spec:
+  entrypoint: pipeline
+  arguments:
+    parameters:
+    - name: argoapp
+      value: model1
+#    - name: argotoken
+#      value: "ARGOTOKEN"
+    - name: replicaCount
+      value: 1
+    - name: containerPort
+      value: 5431
+    - name: dockerImage
+      value: sayyeddocker123/model_serve
+    - name: appname
+      value: model1
+    - name: modelFilename
+      value: scores
+    - name: bucket
+      value: bucket_project-2023-409616
+
+  templates:
+  - name: pipeline
+    steps:
+    - - name: ETL-Process
+        template: etl
+    - - name: Model-Training
+        template: training
+    - - name: model-serving
+        template: serving
+
+#  templates:
+  - name: etl
+    container:
+      image: sayyeddocker123/etl:latest
+      env:
+      - name: BUCKET
+        value: "{{workflow.parameters.bucket}}"
+  - name: training
+    container:
+      image: sayyeddocker123/model_training:latest
+      env:
+      - name: BUCKET
+        value: "{{workflow.parameters.bucket}}"
+  - name: serving
+    container:
+      image: sayyeddocker123/model_serve:latest
+      env:
+      - name: BUCKET
+        value: "{{workflow.parameters.bucket}}"
