@@ -77,5 +77,11 @@ $ kubectl -n argo port-forward service/argo-server 2746:2746
 ![image](https://github.com/sayyed-123/argo-workflow/assets/166358159/db763107-a26f-413d-80d6-bbdc44963d4b)
 
 
+![image](https://github.com/sayyed-123/argo-workflow/assets/166358159/0a71a827-1d4e-4575-98ac-ccde75fbe14f)
+
+![image](https://github.com/sayyed-123/argo-workflow/assets/166358159/afb29f44-ef86-4b53-8487-6c0d0318811e)
+
+
+
 
 
