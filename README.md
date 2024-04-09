@@ -64,7 +64,7 @@ $ kubectl apply -n argo -f https://github.com/argoproj/argo-workflows/releases/d
 
 $ kubectl get all -n argo
 # Submit an example workflow via CLI
-$ argo submit -n argo --watch https://raw.githubusercontent.com/argoproj/argo-workflows/main/examples/hello-world.yaml --watch
+$ argo submit -n argo https://raw.githubusercontent.com/argoproj/argo-workflows/main/examples/hello-world.yaml --watch
 ### You can list all the Workflows you have submitted by running 
 $ argo list -n argo
 
@@ -76,11 +76,34 @@ $ kubectl -n argo port-forward service/argo-server 2746:2746
 ![image](https://github.com/sayyed-123/argo-workflow/assets/166358159/544da679-e827-4b8e-af65-d4ee6ff106ae)
 ![image](https://github.com/sayyed-123/argo-workflow/assets/166358159/db763107-a26f-413d-80d6-bbdc44963d4b)
 
+# build the docker image for each component of ML workflow
+##  $ cd etl/
+$ chmod +x build.sh
+
+$ ./build.sh <DOCKERHUB_USER_NAME>
+
+##  $ cd model_training/
+$ chmod +x build.sh
+
+$ ./build.sh <DOCKERHUB_USER_NAME>
+
+##  $ cd model_serving/
+$ chmod +x build.sh
+
+$ ./build.sh <DOCKERHUB_USER_NAME>
+
+# Create bucket at any cloud and get credintial
+### put scores.csv file in bucket ( for this project create google cloud bucket & key.json )
+
+# Run Argo-workflow from command line
+
+### $ argo submit -n argo pipeline.yaml --watch
 
 ![image](https://github.com/sayyed-123/argo-workflow/assets/166358159/0a71a827-1d4e-4575-98ac-ccde75fbe14f)
 
 ![image](https://github.com/sayyed-123/argo-workflow/assets/166358159/afb29f44-ef86-4b53-8487-6c0d0318811e)
 
+## Now flask app is running in a Pod
 
 
 
