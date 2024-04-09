@@ -42,7 +42,9 @@ $ sudo install minikube-linux-amd64 /usr/local/bin/minikube && rm minikube-linux
   $ kubectl get pods
 
 # Install Argo Workflows  
+https://argoproj.github.io/workflows/
 
+https://argo-workflows.readthedocs.io/en/latest/quick-start/
 ## For Linux
 ### Download the binary
 $ curl -sLO https://github.com/argoproj/argo-workflows/releases/download/v3.4.14/argo-linux-amd64.gz
@@ -72,22 +74,24 @@ $ argo list -n argo
 - Forward the Server's port to access the UI:
 
 $ kubectl -n argo port-forward service/argo-server 2746:2746
+
+$ ssh -i key.pem -L 2746:localhost:2746 -N ubuntu@<Public_ip_EC2>
 - Navigate your browser to https://localhost:2746
 ![image](https://github.com/sayyed-123/argo-workflow/assets/166358159/544da679-e827-4b8e-af65-d4ee6ff106ae)
 ![image](https://github.com/sayyed-123/argo-workflow/assets/166358159/db763107-a26f-413d-80d6-bbdc44963d4b)
 
 # build the docker image for each component of ML workflow
-##  $ cd etl/
+##  $ cd containers/etl/
 $ chmod +x build.sh
 
 $ ./build.sh <DOCKERHUB_USER_NAME>
 
-##  $ cd model_training/
+##  $ cd containers/model_training/
 $ chmod +x build.sh
 
 $ ./build.sh <DOCKERHUB_USER_NAME>
 
-##  $ cd model_serving/
+##  $ cd conatiners/model_serving/
 $ chmod +x build.sh
 
 $ ./build.sh <DOCKERHUB_USER_NAME>
