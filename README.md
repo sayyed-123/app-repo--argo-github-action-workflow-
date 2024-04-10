@@ -94,8 +94,8 @@ $ sh build.sh <DOCKERHUB_USER_NAME>
 ### put scores.csv file in bucket ( for this project create google cloud bucket & key.json )
 
 # Run Argo-workflow from command line
-
-### $ argo submit -n argo pipeline.yaml --watch
+### $ cd argo-workflow/
+### $ argo submit -n argo pipeline-argo-workflow.yaml --watch 
 
 ![image](https://github.com/sayyed-123/argo-workflow/assets/166358159/0a71a827-1d4e-4575-98ac-ccde75fbe14f)
 
