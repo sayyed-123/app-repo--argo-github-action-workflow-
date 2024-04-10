@@ -33,7 +33,7 @@ def loadModel():
 
 @app.route('/')
 def hello():
-    return "hello :)"
+    return "hello Wrld : Flask app is running successfully :"
 
 @app.route('/predict', methods=["POST"])
 def predict():
