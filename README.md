@@ -39,7 +39,7 @@ $ sudo install minikube-linux-amd64 /usr/local/bin/minikube && rm minikube-linux
   
   $ alias kubectl="minikube kubectl --"
   
-  $ kubectl get pods
+  $ kubectl get nodes
 
 # Install Argo Workflows  
 https://argoproj.github.io/workflows/
@@ -74,7 +74,7 @@ $ argo list -n argo
 - Forward the Server's port to access the UI:
 
 $ kubectl -n argo port-forward service/argo-server 2746:2746
-
+### to create a tunnel from EC2 instance to your local machine
 $ ssh -i key.pem -L 2746:localhost:2746 -N ubuntu@<Public_ip_EC2>
 - Navigate your browser to https://localhost:2746
 ![image](https://github.com/sayyed-123/argo-workflow/assets/166358159/544da679-e827-4b8e-af65-d4ee6ff106ae)
@@ -82,19 +82,13 @@ $ ssh -i key.pem -L 2746:localhost:2746 -N ubuntu@<Public_ip_EC2>
 
 # build the docker image for each component of ML workflow
 ##  $ cd containers/etl/
-$ chmod +x build.sh
-
-$ ./build.sh <DOCKERHUB_USER_NAME>
+$ sh build.sh <DOCKERHUB_USER_NAME>
 
 ##  $ cd containers/model_training/
-$ chmod +x build.sh
-
-$ ./build.sh <DOCKERHUB_USER_NAME>
+$ sh build.sh <DOCKERHUB_USER_NAME>
 
 ##  $ cd conatiners/model_serving/
-$ chmod +x build.sh
-
-$ ./build.sh <DOCKERHUB_USER_NAME>
+$ sh build.sh <DOCKERHUB_USER_NAME>
 
 # Create bucket at any cloud and get credintial
 ### put scores.csv file in bucket ( for this project create google cloud bucket & key.json )
