@@ -9,6 +9,6 @@ spec:
     app: flask
   ports:
     - protocol: TCP
-      port: 8080
+      port: 5431
       targetPort: 5431
-  type: NodePort
+  type: ClusterIP
