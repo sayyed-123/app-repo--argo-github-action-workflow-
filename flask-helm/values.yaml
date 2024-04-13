@@ -1,0 +1,5 @@
+replicaCount: 1
+containerPort: 5431
+dockerImage: "sayyeddocker123/model_serve:latest"
+namespace: "flask"
+appname: "flask"
