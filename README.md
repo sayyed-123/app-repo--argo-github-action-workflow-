@@ -8,7 +8,7 @@ Argo Workflows is an open source container-native workflow engine for orchestrat
 - Run CI/CD pipelines natively on Kubernetes without configuring complex software development products.
 # Why Argo Workflows?
 - Designed from the ground up for containers without the overhead and limitations of legacy VM and server-based environments.
-- Cloud agnostic and can run on any Kubernetes cluster.
+- Cloud agnostic and can run on any Kubernetes cluster....
 - Easily orchestrate highly parallel jobs on Kubernetes.
 - Argo Workflows puts a cloud-scale supercomputer at your fingertips!
 # Quick Start
