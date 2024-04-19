@@ -89,6 +89,15 @@ https://argo-workflows.readthedocs.io/en/latest/quick-start/
 
 ![image](https://github.com/sayyed-123/argo-workflow/assets/166358159/0a71a827-1d4e-4575-98ac-ccde75fbe14f)
 
+## ArgoCD Installation
+        kubectl create namespace argocd
+        kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml 
+### Get password for Argo-CD UI ( user = 'admin' )
+        kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
+### Get Argocd UI by port-forwardong
+        kubectl get svc -n argocd 
+        kubectl -n argocd port-forward svc/argocd-server 8080:80 & 
+
 ![image](https://github.com/sayyed-123/argo-workflow/assets/166358159/afb29f44-ef86-4b53-8487-6c0d0318811e)
 
 ## Now flask app is running in a Pod
