@@ -33,7 +33,7 @@ def loadModel():
 
 @app.route('/')
 def hello():
-    return "hello Wrld : Flask app is running successfully :"
+    return "hello World : Flask app is running successfully by ARGO WORKFLOW at Port 5431 :"
 
 @app.route('/predict', methods=["POST"])
 def predict():
