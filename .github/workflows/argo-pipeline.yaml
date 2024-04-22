@@ -22,8 +22,6 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: ${{secrets.REGION}}
 
-    - name: Update kube config
-      run: aws eks update-kubeconfig --name my-cluster
 
     - name: Login to Amazon ECR
       id: login-ecr
@@ -52,4 +50,7 @@ jobs:
         git add .
         git commit -m "Update image for - ${{ github.sha }}"
     - run: echo ${{ github }}
-    - run: git push origin main      
+    - run: git push origin main     
+    
+    - name: Update kube config
+      run: aws eks update-kubeconfig --name my-cluster
