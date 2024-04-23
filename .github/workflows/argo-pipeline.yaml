@@ -1,5 +1,5 @@
-name: ML Workflows Via Actions
-on:
+#name: ML Workflows Via Actions
+#on:
   push:
     branches: ['main']
 jobs:
