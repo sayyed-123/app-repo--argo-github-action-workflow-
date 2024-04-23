@@ -9,12 +9,6 @@ jobs:
     - name: Step One - checkout files in repo
       uses: actions/checkout@v3
 
-    #- name: Install kubectl
-      #uses: azure/setup-kubectl@v2.0
-      #with:
-        #version: 'v1.29.0' # default is latest stable
-      #id: install
-
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
@@ -51,6 +45,3 @@ jobs:
         git commit -m "Update image for - ${{ github.sha }}"
     - run: echo ${{ github }}
     - run: git push origin main     
-    
-    #- name: Update kube config
-      #run: aws eks update-kubeconfig --name my-cluster
